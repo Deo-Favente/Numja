@@ -1,0 +1,27 @@
+name: Development Workflow (On PR)
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+jobs:
+  test:
+    name: Test Java Application with Maven
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v5
+
+      - name: "Setup Java 21"
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'oracle'
+
+      - name: "Run the Maven test phase"
+        run: mvn test
