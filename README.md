@@ -30,9 +30,10 @@ Chaque ajout de fonctionnalité / doc se fait après une pull request. La pull r
 
 ### Nomenclature des branches
 Nous avons une nomenclature de nommage de branches afin d'avoir des noms normalisés :
-- `feat/nouvelle-feature` : Nouvelle fonctionnalité
+- `feat/nouvelle-feature` : Nouvelle fonctionnalité de la bibliothèque
 - `bugfix/correctif` : Correctif sur la branche principale
 - `doc/readme` : Ajout de documentation
+- `ci-cd/tests` : Améliorations liées au CI CD
 
 ### Nomenclature des tags
 Les différentes versions du logicielles sont groupées par tag.
