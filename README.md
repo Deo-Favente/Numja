@@ -2,7 +2,7 @@
 
 | | |
 | --- | --- |
-| Testing | [![Unit Tests](https://github.com/Deo-Favente/Numja/actions/workflows/development.yml/badge.svg)](https://github.com/Deo-Favente/Numja/actions/workflows/development.yml) |
+| Testing | [![Unit tests](https://github.com/Deo-Favente/Numja/actions/workflows/development.yml/badge.svg)](https://github.com/Deo-Favente/Numja/actions/workflows/development.yml) |
 | Package | |
 
 
