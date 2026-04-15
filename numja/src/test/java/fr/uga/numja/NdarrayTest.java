@@ -14,12 +14,12 @@ public class NdarrayTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateZerosNdarray2DInvalidCols(){
-        Ndarray.zeros(1, 0);
+        Ndarray.zeros(1, -1);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateZerosNdarray2DInvalidRows(){
-        Ndarray.zeros(-1, 10);
+        Ndarray.zeros(0, 10);
     }
 
     @Test
@@ -35,11 +35,11 @@ public class NdarrayTest {
 
     @Test
     public void testCreateZerosNdarry2D(){
-        Ndarray array = Ndarray.zeros(10, 10);
+        Ndarray array = Ndarray.zeros(2, 10);
         int[] shape = new int[2];
-        shape[0] = 10;
+        shape[0] = 2;
         shape[1] = 10;
-        assertEquals("Created array should have size", 100, array.getSize());
+        assertEquals("Created array should have size", 20, array.getSize());
         assertEquals("Created array should have dimension ", 2, array.getNdim());
         assertArrayEquals("Created array should have the shape", shape, array.getShape());
     }
