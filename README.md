@@ -1,9 +1,9 @@
 # Numja - A Numpy equivalent for Java
 
-| Testing | [![Unit tests](https://github.com/Deo-Favente/Numja/actions/workflows/development.yml/badge.svg)](https://github.com/Deo-Favente/Numja/actions/workflows/development.yml) |
+| __Testing__ | [![Unit tests](https://github.com/Deo-Favente/Numja/actions/workflows/development.yml/badge.svg)](https://github.com/Deo-Favente/Numja/actions/workflows/development.yml) |
 | :--- | :--- |
-| Coverage | ![Coverage](badges/jacoco.svg) |
-| Package | |
+| __Coverage__ | ![Coverage](badges/jacoco.svg) |
+| __Package__ | |
 
 ## Auteurs
 Samuel [@samuel38fr](https://github.com/samuel38fr) <br>
