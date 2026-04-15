@@ -1,9 +1,8 @@
 # Numja - A Numpy equivalent for Java
 
-| __Testing__ | [![Unit tests](https://github.com/Deo-Favente/Numja/actions/workflows/development.yml/badge.svg)](https://github.com/Deo-Favente/Numja/actions/workflows/development.yml) |
-| :--- | :--- |
-| __Coverage__ | ![Coverage](badges/jacoco.svg) |
-| __Package__ | |
+| __Testing__ | [![CI](https://github.com/Deo-Favente/Numja/actions/workflows/ci.yml/badge.svg)](https://github.com/Deo-Favente/Numja/actions/workflows/ci.yml) ![Coverage](badges/jacoco.svg) |
+|:------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| __Package__ | [![CD](https://github.com/Deo-Favente/Numja/actions/workflows/cd.yml/badge.svg)](https://github.com/Deo-Favente/Numja/actions/workflows/cd.yml)                                |
 
 ## Auteurs
 Samuel [@samuel38fr](https://github.com/samuel38fr) <br>
@@ -16,11 +15,19 @@ Projet réalisé dans le cadre du cours de DevOps.
 - Vecteurs (1D) et de matrices (2D)
 - Données de type float supportés
 
+## Démonstration
+Exécutez simplement l'image Docker pour voir un aperçu des fonctionnalités :
+```
+docker pull ghcr.io/deo-favente/numja:main
+docker run ghcr.io/deo-favente/numja:main
+```
+
 ## Outils utilisés
 - Gestion de version : Git (sur [Github.com](github.com))
 - IDE : IntellijIdea
 - Gestion et de construction de projet : Maven
 - Couverture de code : JaCoco
+- Déploiement d'une démo : Docker et Github Packages
 
 ## Mode de fonctionnement
 ### Workflow
@@ -30,11 +37,13 @@ Chaque ajout de fonctionnalité / doc se fait après une pull request. La pull r
 ### Nomenclature des branches
 Nous avons une nomenclature de nommage de branches afin d'avoir des noms normalisés :
 - `feat/nouvelle-feature` : Nouvelle fonctionnalité de la bibliothèque
-- `bugfix/correctif` : Correctif sur la branche principale
+- `hotfix/correctif` : Correctif sur la branche principale
 - `doc/readme` : Ajout de documentation
 - `ci-cd/tests` : Améliorations liées au CI CD
 
 ### Nomenclature des tags
+Les tags sont des versions du logiciel, avec leur fonctionnalités respectives, manuellement marquées par l'équipe de développement comme stables. On entend par stable sans bug connu, car la branche main peut parfois avoir besoin de correctifs.
 Les différentes versions du logicielles sont groupées par tag.
-Ajouter une nouvelle fonctionnallité fait passer le logiciel de la version `vx.y` à la version `v(x+1).y` <br>
+
+Ajouter une nouvelle fonctionnallité fait passer le logiciel de la version `vx.y` à la version `v(x+1).0` <br>
 Corriger un bug important fait passer la version `vx.y` à la version `vx.(y+1)`
