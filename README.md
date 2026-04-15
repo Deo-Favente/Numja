@@ -37,7 +37,7 @@ Chaque ajout de fonctionnalité / doc se fait après une pull request. La pull r
 ### Nomenclature des branches
 Nous avons une nomenclature de nommage de branches afin d'avoir des noms normalisés :
 - `feat/nouvelle-feature` : Nouvelle fonctionnalité de la bibliothèque
-- `hotfix/correctif` : Correctif sur la branche principale
+- `bugfix/correctif`, `hotfix/correctif` : Correction de bugs
 - `doc/readme` : Ajout de documentation
 - `ci-cd/tests` : Améliorations liées au CI CD
 
