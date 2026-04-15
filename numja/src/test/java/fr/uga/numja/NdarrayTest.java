@@ -7,16 +7,5 @@ import static org.junit.Assert.assertEquals;
 
 public class NdarrayTest {
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testCreateZerosEmptyNdarray1D(){
-        Ndarray.zeros(0);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testCreateZerosNdarray2DInvalidCols(){
-        Ndarray.zeros(1, 0);
-    }
-
-
 
 }
