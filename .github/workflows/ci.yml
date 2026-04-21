@@ -1,4 +1,4 @@
-name: CI - Unit Tests
+name: CI - Unit Tests & Sonar Analyze
 
 on:
   pull_request:
@@ -24,8 +24,14 @@ jobs:
       - name: Run the Maven compile script
         working-directory: numja
         run: mvn compile
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
-  test:
+  unit-test:
     name: Start Maven Tests
     runs-on: ubuntu-latest
     needs: [build]
@@ -42,3 +48,13 @@ jobs:
       - name: Run the Maven test script
         working-directory: numja
         run: mvn test
+        
+  sonar-analyze:
+    name: Analyze with Sonar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start Sonar Analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=M1-Info-DevOps-Projet-Numja -Dsonar.projectName='M1 Info DevOps Projet Numja'
