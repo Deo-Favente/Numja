@@ -28,6 +28,7 @@ docker run ghcr.io/deo-favente/numja:main
 - Gestion et de construction de projet : Maven
 - Couverture de code : JaCoco
 - Déploiement d'une démo : Docker et Github Packages
+- Hébergement de la documentation : [Github Pages](https://deo-favente.github.io/numja/)
 
 ## Mode de fonctionnement
 ### Workflow
@@ -47,3 +48,8 @@ Les différentes versions du logicielles sont groupées par tag.
 
 Ajouter une nouvelle fonctionnallité fait passer le logiciel de la version `vx.y` à la version `v(x+1).0` <br>
 Corriger un bug important fait passer la version `vx.y` à la version `vx.(y+1)`
+
+
+## Javadoc
+
+La documentation de la bibliothèque est disponible sur [Github Pages](https://deo-favente.github.io/numja/apidocs/).
