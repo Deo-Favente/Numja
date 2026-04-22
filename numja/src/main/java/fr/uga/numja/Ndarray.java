@@ -195,6 +195,12 @@ public class Ndarray {
         return array;
     }
 
+    /**
+     * Reshapes the current array to the given dimensions.
+     *
+     * @param firstDim  size of the first dimension
+     * @param secondDim size of the second dimension (use 0 for 1D reshape).
+     */
     public void reshape(int firstDim, int secondDim){
         if(firstDim <= 0 || secondDim < 0){
             throw new IllegalArgumentException();
@@ -216,7 +222,6 @@ public class Ndarray {
                     }
                 }
 
-                // rebuild 1D
                 data = new float[1][size];
                 System.arraycopy(array, 0, data[0], 0, size);
 
@@ -224,7 +229,6 @@ public class Ndarray {
                 shape[0] = size;
                 shape[1] = 0;
             }
-            return;
         }else{//reshape 2D
             if(firstDim * secondDim != size){
                 throw new IllegalArgumentException("Incompatible reshape");
