@@ -1,0 +1,57 @@
+name: CD - GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # On branch
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy-javadoc:
+    name: Generate and deploy Javadoc
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: oracle
+          cache: maven            # Enable Maven caching to optimize a bit
+
+      - name: Generate Javadoc
+        working-directory: numja
+        run: |
+          mvn compile javadoc:javadoc
+          mkdir -p ../site/apidocs
+          cp -r target/reports/apidocs/. ../site/apidocs/
+
+      - name: Convert README to landing page
+        run: |
+          sudo apt-get install -y pandoc
+          pandoc README.md -o site/index.html --metadata title="Numja"
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
