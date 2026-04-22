@@ -380,8 +380,8 @@ public class NdarrayTest {
         float[] tab = {1, 2, 3};
         Ndarray array = Ndarray.array(tab);
         Ndarray result = array.add(10);
+        assertEquals("original must be unchanged", "[1.0 , 2.0 , 3.0 ]", array.toString());
         assertEquals("add scalar 1D", "[11.0 , 12.0 , 13.0 ]", result.toString());
-        assertEquals("original must be unchanged after add", "[1.0 , 2.0 , 3.0 ]", array.toString());
     }
 
     @Test
@@ -393,7 +393,6 @@ public class NdarrayTest {
         Ndarray result = array.add(1);
         assertEquals("add scalar 2D", "[[2.0 , 3.0 ],\n[4.0 , 5.0 ]]", result.toString());
     }
-
 
     @Test
     public void testAddNdarray1D() {
@@ -428,7 +427,17 @@ public class NdarrayTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testAddNdarrayShapeMismatch() {
+    public void testAddNdarrayNdimMismatch() {
+        float[] taba = {1, 2, 3};
+        float[] subtab1b = {1, 2, 3};
+        float[][] tabb = {subtab1b};
+        Ndarray a = Ndarray.array(taba);
+        Ndarray b = Ndarray.array(tabb);
+        a.add(b);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddNdarrayFirstDimMismatch() {
         float[] taba = {1, 2, 3};
         float[] tabb = {1, 2};
         Ndarray a = Ndarray.array(taba);
@@ -437,10 +446,13 @@ public class NdarrayTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testAddNdarrayDimMismatch() {
-        float[] taba = {1, 2, 3};
-        float[] subtab1b = {1, 2, 3};
-        float[][] tabb = {subtab1b};
+    public void testAddNdarraySecondDimMismatch() {
+        float[] subtab1a = {1, 2, 3};
+        float[] subtab2a = {4, 5, 6};
+        float[][] taba = {subtab1a, subtab2a};
+        float[] subtab1b = {1, 2};
+        float[] subtab2b = {3, 4};
+        float[][] tabb = {subtab1b, subtab2b};
         Ndarray a = Ndarray.array(taba);
         Ndarray b = Ndarray.array(tabb);
         a.add(b);
@@ -496,9 +508,32 @@ public class NdarrayTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testAddEqualsNdarrayShapeMismatch() {
+    public void testAddEqualsNdarrayNdimMismatch() {
+        float[] taba = {1, 2, 3};
+        float[] subtab1b = {1, 2, 3};
+        float[][] tabb = {subtab1b};
+        Ndarray a = Ndarray.array(taba);
+        Ndarray b = Ndarray.array(tabb);
+        a.addEquals(b);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddEqualsNdarrayFirstDimMismatch() {
         float[] taba = {1, 2, 3};
         float[] tabb = {1, 2};
+        Ndarray a = Ndarray.array(taba);
+        Ndarray b = Ndarray.array(tabb);
+        a.addEquals(b);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddEqualsNdarraySecondDimMismatch() {
+        float[] subtab1a = {1, 2, 3};
+        float[] subtab2a = {4, 5, 6};
+        float[][] taba = {subtab1a, subtab2a};
+        float[] subtab1b = {1, 2};
+        float[] subtab2b = {3, 4};
+        float[][] tabb = {subtab1b, subtab2b};
         Ndarray a = Ndarray.array(taba);
         Ndarray b = Ndarray.array(tabb);
         a.addEquals(b);
